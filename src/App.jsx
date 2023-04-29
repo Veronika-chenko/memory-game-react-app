@@ -30,12 +30,6 @@ export const App = () => {
     }
   }, [choiceOne, choiceTwo])
 
-  // useEffect(() => {
-  //   if (score === cards.length) {
-      
-  //   }
-  // }, [score])
-
   //  flipCard - start function
   const flipCard = () => {
     const newCardList = [...cardList, ...cardList]

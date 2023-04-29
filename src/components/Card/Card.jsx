@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Back, Front, InnerWrap } from "./Card.styled"
 
 export const Card = ({card, handleChoice, flipped}) => {
@@ -14,4 +15,13 @@ export const Card = ({card, handleChoice, flipped}) => {
             <Back />
         </InnerWrap>
     )
+}
+
+Card.propTypes = {
+    card: PropTypes.shape({
+        src: PropTypes.string.isRequired,
+        matched: PropTypes.bool.isRequired,
+    }),
+    handleChoice: PropTypes.func.isRequired,
+    flipped: PropTypes.bool.isRequired,
 }
