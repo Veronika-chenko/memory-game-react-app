@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InnerWrap = styled.div`
+export const InnerWrap = styled.li`
     position: relative;
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@ export const InnerWrap = styled.div`
     transform-style: preserve-3d;
     transition: transform 0.6s ease;
 
-    transform: ${p => p.flipped && `rotateY(180deg);`}
+    transform: ${p => p.flipped && `rotateY(180deg);`};
 `
 
 export const Front = styled.img`
@@ -31,5 +31,4 @@ export const Back = styled.div`
     height: 100%;
     background-color: #03453b;
     backface-visibility: hidden;
-    
 `

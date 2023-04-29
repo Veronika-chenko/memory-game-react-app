@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { cardList } from './cards';
 import { Card } from './components/Card/Card';
-import { Container, Grid } from "./App.styled";
+import { Container, Grid, NewGameButton } from "./App.styled";
 
 export const App = () => {
   const [cards, setCards] = useState(null);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
+  // const [score, setScore] = useState(0);
 
   useEffect(() => {
     flipCard()
@@ -14,10 +15,8 @@ export const App = () => {
 
   useEffect(() => {
     if(choiceOne && choiceTwo) {
-      // console.log("🚀", choiceOne, choiceTwo)
-      
-      if(choiceOne.src === choiceTwo.src) {
-        // console.log("equal")
+      if (choiceOne.src === choiceTwo.src) {
+        // setScore(prev => prev + 1);
         setCards(prev => {
           return prev.map(card => {
             if(card.src === choiceOne.src) {
@@ -27,12 +26,15 @@ export const App = () => {
           })
         })
       }
-      // } else {
-      //   console.log("not equal")
-      // }
       setTimeout(() => turnBack(), 500);
     }
   }, [choiceOne, choiceTwo])
+
+  // useEffect(() => {
+  //   if (score === cards.length) {
+      
+  //   }
+  // }, [score])
 
   //  flipCard - start function
   const flipCard = () => {
@@ -53,8 +55,16 @@ export const App = () => {
     setChoiceTwo(null);
   }
 
+  const newGame = () => {
+    turnBack();
+    // setScore(0);
+    setCards(prev => prev.map(card => ({...card, matched: false})));
+  }
+
   return (
     <Container>
+      {/* <p>Score: {score}/{ cards?.length/2}</p> */}
+      <NewGameButton onClick={newGame}>New Game</NewGameButton>
       <Grid>
         {cards && cards.map(card => 
           <Card 
