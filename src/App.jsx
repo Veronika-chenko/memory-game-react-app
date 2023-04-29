@@ -7,7 +7,7 @@ export const App = () => {
   const [cards, setCards] = useState(null);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
-  // const [score, setScore] = useState(0);
+  // const [score, setScore] = useState(0); 
 
   useEffect(() => {
     flipCard()
