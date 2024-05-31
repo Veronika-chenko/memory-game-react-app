@@ -57,12 +57,11 @@ export const App = () => {
   const newGame = () => {
     turnBack();
     setTurns(0);
-    setCards((prev) => prev.map((card) => ({ ...card, matched: false })));
+    flipCard();
   };
 
   return (
     <Container>
-      {/* <Turns>Turns: {turns}</Turns> */}
       <NewGameButton onClick={newGame}>New Game</NewGameButton>
       <Turns>Turns: {turns}</Turns>
       <Grid>
