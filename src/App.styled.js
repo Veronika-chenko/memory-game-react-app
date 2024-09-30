@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -28,6 +28,7 @@ export const NewGameButton = styled.button`
 
   color: #ebebeb;
   background-color: #00554e;
+  background-color: var(--accent-background);
 `;
 
 export const Grid = styled.ul`

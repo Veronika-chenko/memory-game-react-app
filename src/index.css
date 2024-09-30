@@ -7,13 +7,30 @@
   padding: 0;
 }
 
+html[data-theme="coffee"] {
+  --main-background: rgb(250, 213, 128);
+  --accent-background: brown;
+}
+
+html[data-theme="flowers"] {
+  --main-background: #fffcfa;
+  --accent-background: darkgreen;
+}
+
+html[data-theme="music"] {
+  --main-background: lightblue;
+  --accent-background: blue;
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fffcfa;
+  /* background-color: #fffcfa; */
+  background-color: var(--main-background);
+  transition: background-color 200ms linear;
 }
 
 ul {

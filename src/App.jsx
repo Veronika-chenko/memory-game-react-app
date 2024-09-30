@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import { cardList } from './cards';
-import { Card } from './components/Card/Card';
-import { Container, Grid, NewGameButton, Turns } from './App.styled';
+import { useEffect, useState } from "react";
+import { cardList } from "./cards";
+import { Card } from "./components/Card/Card";
+import { Container, Grid, NewGameButton, Turns } from "./App.styled";
+import { ThemeSwitcher } from "./components/ThemeSwitcher/ThemeSwitcher";
 
 export const App = () => {
   const [cards, setCards] = useState(null);
@@ -62,6 +63,7 @@ export const App = () => {
 
   return (
     <Container>
+      <ThemeSwitcher />
       <NewGameButton onClick={newGame}>New Game</NewGameButton>
       <Turns>Turns: {turns}</Turns>
       <Grid>
