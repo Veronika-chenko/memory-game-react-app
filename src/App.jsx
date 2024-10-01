@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fetchCards } from "./api/fetchCards";
 import { useTheme } from "./hooks/useTheme";
 
@@ -17,9 +17,34 @@ export const App = () => {
     setTheme(e.currentTarget.name);
   };
 
+  //  flipCard - start function
+  const flipCard = useCallback(async () => {
+    const cardList = await fetchCards(theme);
+
+    const newCardList = [...cardList, ...cardList]
+      .sort(() => 0.5 - Math.random())
+      .reduce(
+        (acc, card, index) => [...acc, { ...card, id: Date.now() + index }],
+        []
+      );
+
+    setCards(newCardList);
+  }, [theme, setCards]);
+
+  const turnBack = useCallback(() => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+  }, []);
+
+  const newGame = useCallback(() => {
+    turnBack();
+    setTurns(0);
+    flipCard();
+  }, [turnBack, flipCard]);
+
   useEffect(() => {
     flipCard();
-  }, []);
+  }, [flipCard]);
 
   useEffect(() => {
     newGame();
@@ -28,7 +53,7 @@ export const App = () => {
     };
 
     fetchAndSetCards();
-  }, [theme]);
+  }, [flipCard, newGame, theme]);
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
@@ -47,36 +72,11 @@ export const App = () => {
         setTurns((prev) => prev + 1);
       }, 500);
     }
-  }, [choiceOne, choiceTwo]);
-
-  //  flipCard - start function
-  const flipCard = async () => {
-    const cardList = await fetchCards(theme);
-
-    const newCardList = [...cardList, ...cardList]
-      .sort(() => 0.5 - Math.random())
-      .reduce(
-        (acc, card, index) => [...acc, { ...card, id: Date.now() + index }],
-        []
-      );
-
-    setCards(newCardList);
-  };
-
-  const newGame = () => {
-    turnBack();
-    setTurns(0);
-    flipCard();
-  };
+  }, [choiceOne, choiceTwo, turnBack]);
 
   // handle choice
   const handleChoice = (card) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
-  };
-
-  const turnBack = () => {
-    setChoiceOne(null);
-    setChoiceTwo(null);
   };
 
   return (
