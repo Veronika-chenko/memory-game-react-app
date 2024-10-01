@@ -4,6 +4,7 @@ import { useTheme } from "./hooks/useTheme";
 
 import { Container, Grid, NewGameButton, Turns } from "./App.styled";
 import { Card, ThemeSwitcher } from "./components";
+import { ThemeSwitcherMobile } from "./components/ThemeSwitcherMobile";
 
 export const App = () => {
   const { theme, setTheme } = useTheme();
@@ -80,6 +81,7 @@ export const App = () => {
 
   return (
     <Container>
+      <ThemeSwitcherMobile setThemeByName={setThemeByName} theme={theme} />
       <ThemeSwitcher setThemeByName={setThemeByName} theme={theme} />
       <NewGameButton onClick={newGame}>New Game</NewGameButton>
       <Turns>Turns: {turns}</Turns>

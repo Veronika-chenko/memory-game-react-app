@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const ThemeButtonsWrap = styled.div`
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  display: none;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 
-  display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
 `;
 
 export const Button = styled.button`
@@ -25,8 +28,6 @@ export const Button = styled.button`
   svg {
     width: 24px;
     height: 24px;
-    /* fill: ${(p) =>
-      p.theme === p.name ? "#ebebeb" : "var(--accent-background)"}; */
     fill: ${(p) =>
       p.theme === p.name ? "#f6f6f4" : "var(--accent-background)"};
   }

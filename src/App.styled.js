@@ -14,12 +14,6 @@ export const Container = styled.div`
   padding: 120px 16px 24px;
 `;
 
-export const Turns = styled.p`
-  margin-bottom: 32px;
-  font-size: 18px;
-  font-weight: 600;
-`;
-
 export const NewGameButton = styled.button`
   min-width: 197px;
   height: 52px;
@@ -34,6 +28,13 @@ export const NewGameButton = styled.button`
   color: var(--text);
   background-color: var(--accent-background);
   box-shadow: var(--btn-shadow);
+`;
+
+export const Turns = styled.p`
+  margin-bottom: 32px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #020d19;
 `;
 
 export const Grid = styled.ul`

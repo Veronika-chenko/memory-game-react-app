@@ -32,7 +32,7 @@ html[data-theme="music"] {
   --text: #4b3832;
   --main-background: #f8e8d3;
   --accent-background: #ee9e2b;
-  --btn-shadow: 2px 3px 6px #b5651d, 0px -2px 8px 2px #b5651d inset;
+  --btn-shadow: 2px 3px 6px #b5651d, 0px -2px 8px 2px #a65c1b inset;
 
   --front-card-background: #fff5e1;
   --card-shadow: -2px -2px 10px 2px #b5651d inset;
