@@ -8,7 +8,6 @@ export const Container = styled.div`
   top: 0;
   right: 0;
 
-  display: flex;
   z-index: 1;
   transform: ${(p) => (p.menuOpen ? "translateX(0)" : "translateX(80px)")};
   transition: transform 250ms linear;
@@ -19,20 +18,22 @@ export const Container = styled.div`
 `;
 
 export const SettingsButton = styled.button`
+  position: absolute;
+  top: 24px;
+  left: -56px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: 56px;
   height: 56px;
-  margin-top: 24px;
   padding: 8px;
   padding-left: 12px;
 
   border-radius: 30px 0 0 30px;
 
   background-image: url(${(p) => (p.menuOpen ? cross : settingIcon)});
-  background-color: lightgray;
+  background-color: #d3d3d3;
   background-repeat: no-repeat;
   background-position: center left 18px;
   background-size: 24px;
@@ -44,9 +45,8 @@ export const ThemeButtonsWrap = styled.div`
   gap: 8px;
 
   height: 100vh;
-  background-color: lightgray;
+  background-color: #d3d3d3;
   padding: 24px 12px;
-  /* margin-bottom: 24px; */
 `;
 
 export const Button = styled.button`
