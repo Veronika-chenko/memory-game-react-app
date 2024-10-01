@@ -1,18 +1,33 @@
 import { useEffect, useState } from "react";
-import { cardList } from "./cards";
-import { Card } from "./components/Card/Card";
+import { fetchCards } from "./api/fetchCards";
+import { useTheme } from "./hooks/useTheme";
+
 import { Container, Grid, NewGameButton, Turns } from "./App.styled";
-import { ThemeSwitcher } from "./components/ThemeSwitcher/ThemeSwitcher";
+import { Card, ThemeSwitcher } from "./components";
 
 export const App = () => {
+  const { theme, setTheme } = useTheme();
   const [cards, setCards] = useState(null);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [turns, setTurns] = useState(0);
 
+  const setThemeByName = (e) => {
+    setTheme(e.currentTarget.name);
+  };
+
   useEffect(() => {
     flipCard();
   }, []);
+
+  useEffect(() => {
+    newGame();
+    const fetchAndSetCards = async () => {
+      await flipCard();
+    };
+
+    fetchAndSetCards();
+  }, [theme]);
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
@@ -34,7 +49,9 @@ export const App = () => {
   }, [choiceOne, choiceTwo]);
 
   //  flipCard - start function
-  const flipCard = () => {
+  const flipCard = async () => {
+    const cardList = await fetchCards(theme);
+
     const newCardList = [...cardList, ...cardList]
       .sort(() => 0.5 - Math.random())
       .reduce(
@@ -43,6 +60,12 @@ export const App = () => {
       );
 
     setCards(newCardList);
+  };
+
+  const newGame = () => {
+    turnBack();
+    setTurns(0);
+    flipCard();
   };
 
   // handle choice
@@ -55,15 +78,9 @@ export const App = () => {
     setChoiceTwo(null);
   };
 
-  const newGame = () => {
-    turnBack();
-    setTurns(0);
-    flipCard();
-  };
-
   return (
     <Container>
-      <ThemeSwitcher />
+      <ThemeSwitcher setThemeByName={setThemeByName} theme={theme} />
       <NewGameButton onClick={newGame}>New Game</NewGameButton>
       <Turns>Turns: {turns}</Turns>
       <Grid>

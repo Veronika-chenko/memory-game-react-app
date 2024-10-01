@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-import { ReactComponent as coffeeIcon } from "../../img/themeButtons/coffee.svg";
-import { ReactComponent as flowersIcon } from "../../img/themeButtons/rose.svg";
-import { ReactComponent as musicIcon } from "../../img/themeButtons/music-note.svg";
-
 export const ThemeButtonsWrap = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
   display: flex;
-  gap: 20px;
+  gap: 8px;
   margin-bottom: 24px;
 `;
 
@@ -18,22 +18,21 @@ export const Button = styled.button`
   height: 56px;
   padding: 8px;
   border-radius: 4px;
-  background-color: ${(p) => (p.theme === p.name ? "green" : "transparent")};
+
+  background-color: ${(p) =>
+    p.theme === p.name ? "var(--accent-background)" : "transparent"};
 
   svg {
     width: 24px;
     height: 24px;
+    /* fill: ${(p) =>
+      p.theme === p.name ? "#ebebeb" : "var(--accent-background)"}; */
+    fill: ${(p) =>
+      p.theme === p.name ? "#f6f6f4" : "var(--accent-background)"};
   }
-`;
 
-export const CoffeeIcon = styled(coffeeIcon)`
-  fill: red;
-`;
-
-export const FlowersIcon = styled(flowersIcon)`
-  fill: red;
-`;
-
-export const MusicIcon = styled(musicIcon)`
-  fill: red;
+  @media screen and (min-width: 768px) {
+    width: 48px;
+    height: 48px;
+  }
 `;

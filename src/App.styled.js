@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  max-width: 1000px;
+
   margin: 0 auto;
   padding: 84px 16px;
+  padding: 120px 16px 24px;
 `;
 
 export const Turns = styled.p`
@@ -26,16 +31,16 @@ export const NewGameButton = styled.button`
   font-size: 18px;
   line-height: calc(22px / 18px);
 
-  color: #ebebeb;
-  background-color: #00554e;
+  color: var(--text);
   background-color: var(--accent-background);
+  box-shadow: var(--btn-shadow);
 `;
 
 export const Grid = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 2px;
+  gap: 4px;
 
   width: 100%;
   height: calc(100vw - 32px - ((100vw - 32px) / 4));

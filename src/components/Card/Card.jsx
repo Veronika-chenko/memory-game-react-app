@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { Back, Front, InnerWrap } from './Card.styled';
+import PropTypes from "prop-types";
+import { Back, Front, InnerWrap } from "./Card.styled";
 
 export const Card = ({ card, handleChoice, flipped }) => {
   const { src, matched } = card;
@@ -11,7 +11,7 @@ export const Card = ({ card, handleChoice, flipped }) => {
 
   return (
     <InnerWrap flipped={flipped} onClick={handleClick}>
-      <Front src={src} alt='flower' />
+      <Front src={src} alt="" />
       <Back />
     </InnerWrap>
   );

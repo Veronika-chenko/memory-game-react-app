@@ -8,8 +8,8 @@ export const InnerWrap = styled.li`
 
   width: 100%;
   height: 100%;
+  background-color: var(--front-card-background);
   border-radius: 4px;
-  border: 1px solid #000;
   cursor: pointer;
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
@@ -29,7 +29,8 @@ export const Back = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  /* background-color: #03453b; */
   background-color: var(--accent-background);
+  box-shadow: var(--card-shadow);
   backface-visibility: hidden;
+  border-radius: 4px;
 `;
